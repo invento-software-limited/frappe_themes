@@ -1,0 +1,48 @@
+{
+ "actions": [],
+ "creation": "2026-10-04 11:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "view",
+  "image",
+  "image_preview"
+ ],
+ "fields": [
+  {
+   "columns": 3,
+   "fieldname": "view",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "View",
+   "reqd": 1
+  },
+  {
+   "columns": 7,
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "in_list_view": 1,
+   "label": "Image",
+   "reqd": 1
+  },
+  {
+   "fieldname": "image_preview",
+   "fieldtype": "Image",
+   "label": "Preview",
+   "options": "image"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-04 11:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Theme Studio",
+ "name": "Theme Thumbnail",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

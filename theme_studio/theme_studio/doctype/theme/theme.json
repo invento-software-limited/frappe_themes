@@ -1,0 +1,75 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 0,
+ "autoname": "field:theme_name",
+ "creation": "2026-09-28 13:47:29.772378",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "theme_name",
+  "compiled_css",
+  "thumbnails_section",
+  "thumbnails"
+ ],
+ "fields": [
+  {
+   "fieldname": "theme_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Theme Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "description": "Generated from the colors on the other tabs when the theme is saved. The rules that use them are in theme_studio/public/css/theme_studio.css.",
+   "fieldname": "compiled_css",
+   "fieldtype": "Code",
+   "label": "Theme CSS",
+   "options": "CSS",
+   "read_only": 1
+  },
+  {
+   "fieldname": "thumbnails_section",
+   "fieldtype": "Section Break",
+   "label": "Previews"
+  },
+  {
+   "description": "Screenshots of the desk with this theme applied, shown in the Theme Settings gallery.",
+   "fieldname": "thumbnails",
+   "fieldtype": "Table",
+   "label": "Thumbnails",
+   "options": "Theme Thumbnail"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-25 15:22:08.435183",
+ "modified_by": "Administrator",
+ "module": "Theme Studio",
+ "name": "Theme",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "theme_name",
+ "in_create": 1
+}
