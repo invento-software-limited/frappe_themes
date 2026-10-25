@@ -11,7 +11,7 @@ on:
       - version-16
 
 concurrency:
-  group: version-16-theme_studio-${{ github.event.number }}
+  group: version-16-frappe_themes-${{ github.event.number }}
   cancel-in-progress: true
 
 jobs:
@@ -92,10 +92,10 @@ jobs:
       - name: Install
         working-directory: /home/runner/frappe-bench
         run: |
-          bench get-app theme_studio $GITHUB_WORKSPACE
+          bench get-app frappe_themes $GITHUB_WORKSPACE
           bench setup requirements --dev
           bench new-site --db-root-password root --admin-password admin test_site
-          bench --site test_site install-app theme_studio
+          bench --site test_site install-app frappe_themes
           bench build
         env:
           CI: 'Yes'
@@ -104,6 +104,6 @@ jobs:
         working-directory: /home/runner/frappe-bench
         run: |
           bench --site test_site set-config allow_tests true
-          bench --site test_site run-tests --app theme_studio
+          bench --site test_site run-tests --app frappe_themes
         env:
           TYPE: server

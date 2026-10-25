@@ -1,5 +1,5 @@
 [project]
-name = "theme_studio"
+name = "frappe_themes"
 authors = [
     { name = "Nazmul Hossain", email = "nazmul@invento.com.bd"}
 ]

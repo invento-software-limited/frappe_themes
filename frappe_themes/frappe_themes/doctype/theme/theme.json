@@ -22,7 +22,7 @@
    "unique": 1
   },
   {
-   "description": "Generated from the colors on the other tabs when the theme is saved. The rules that use them are in theme_studio/public/css/theme_studio.css.",
+   "description": "Generated from the colors on the other tabs when the theme is saved. The rules that use them are in frappe_themes/public/css/frappe_themes.bundle.css.",
    "fieldname": "compiled_css",
    "fieldtype": "Code",
    "label": "Theme CSS",
@@ -47,7 +47,7 @@
  "links": [],
  "modified": "2026-10-25 15:22:08.435183",
  "modified_by": "Administrator",
- "module": "Theme Studio",
+ "module": "Frappe Themes",
  "name": "Theme",
  "naming_rule": "By fieldname",
  "owner": "Administrator",

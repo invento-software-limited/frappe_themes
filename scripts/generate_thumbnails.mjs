@@ -1,4 +1,4 @@
-// Captures desk screenshots of every Theme into theme_studio/public/images/thumbnails/<slug>/.
+// Captures desk screenshots of every Theme into frappe_themes/public/images/thumbnails/<slug>/.
 //
 // Usage (from a folder where `npm i puppeteer-core` has been run):
 //   SITE_URL=http://127.0.0.1:8000 SID=<administrator sid> \
@@ -7,7 +7,7 @@
 // ONLY_VIEWS="Gantt View,Kanban View" re-captures just those views and leaves the other images.
 //
 // Get a SID with `bench --site <site> browse --user Administrator`, then run
-// `bench --site <site> execute theme_studio.utils.thumbnails.sync_thumbnails` to load
+// `bench --site <site> execute frappe_themes.utils.thumbnails.sync_thumbnails` to load
 // the images into each Theme's Thumbnails table.
 
 import fs from "node:fs";
@@ -22,7 +22,7 @@ const OUT_DIR =
   process.env.OUT_DIR ||
   path.resolve(
     path.dirname(fileURLToPath(import.meta.url)),
-    "../theme_studio/public/images/thumbnails"
+    "../frappe_themes/public/images/thumbnails"
   );
 
 // File names are prefixed with their order so the gallery keeps this sequence
@@ -103,7 +103,7 @@ for (const theme of themes) {
   const dir = path.join(OUT_DIR, slug);
   fs.mkdirSync(dir, { recursive: true });
 
-  // Swap the boot info so theme_studio.js applies this theme on every page change
+  // Swap the boot info so frappe_themes.js applies this theme on every page change
   await page.evaluate(
     (slug, css) => {
       const info = {
@@ -112,7 +112,7 @@ for (const theme of themes) {
         theme_slug: slug,
         theme_css: css,
       };
-      frappe.boot.theme_studio = info;
+      frappe.boot.frappe_themes = info;
       document.documentElement.setAttribute("data-theme", "light");
       $(document).trigger("page-change");
     },

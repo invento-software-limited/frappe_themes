@@ -9,7 +9,7 @@ from frappe.model.document import Document
 
 # Themes are fixed: each one's CSS ships ready-made in fixtures/theme.json and users only choose one
 # in Theme Settings. Scripts that maintain the standard themes (e.g. sync_thumbnails) set this flag.
-MAINTENANCE_FLAG = "theme_studio_maintenance"
+MAINTENANCE_FLAG = "frappe_themes_maintenance"
 
 
 class Theme(Document):
@@ -25,7 +25,7 @@ class Theme(Document):
 
 def check_themes_can_change():
 	"""Themes are only written by the app itself: fixture sync on install / migrate, patches, tests
-	and maintenance scripts that set frappe.flags.theme_studio_maintenance."""
+	and maintenance scripts that set frappe.flags.frappe_themes_maintenance."""
 	flags = frappe.flags
 	if (
 		flags.in_install
@@ -48,7 +48,7 @@ def check_themes_can_change():
 def get_standard_themes():
 	"""Names of the standard themes, taken from the Theme fixture filter in hooks.py."""
 	names = []
-	for fixture in frappe.get_hooks("fixtures", app_name="theme_studio") or []:
+	for fixture in frappe.get_hooks("fixtures", app_name="frappe_themes") or []:
 		if not isinstance(fixture, dict) or fixture.get("dt") != "Theme":
 			continue
 		for field, operator, value in fixture.get("filters") or []:
@@ -58,7 +58,7 @@ def get_standard_themes():
 
 
 def get_theme_slug(theme_name):
-	"""Value of the `data-theme-studio` attribute set on <html> while the theme is active; each
+	"""Value of the `data-frappe-themes` attribute set on <html> while the theme is active; each
 	theme's CSS is scoped to it."""
 	if not theme_name:
 		return "default"

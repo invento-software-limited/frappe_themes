@@ -1,8 +1,8 @@
-### Theme Studio
+### Frappe Themes
 
 Restyle the Frappe / ERPNext desk with ready-made color themes, developed by Invento Software Limited.
 
-Theme Studio recolors the whole desk (sidebar, buttons, forms, lists, child tables, menus, views and workspace widgets) for every user, without an asset build. It works on Frappe v16: both the classic desk and the redesigned desk introduced in later v16 releases.
+Frappe Themes recolors the whole desk (sidebar, buttons, forms, lists, child tables, menus, views and workspace widgets) for every user, without an asset build. It works on Frappe v16: both the classic desk and the redesigned desk introduced in later v16 releases.
 
 ### Features
 
@@ -17,7 +17,7 @@ Theme Studio recolors the whole desk (sidebar, buttons, forms, lists, child tabl
 ```bash
 cd $PATH_TO_YOUR_BENCH
 bench get-app $URL_OF_THIS_REPO --branch version-16
-bench --site <site> install-app theme_studio
+bench --site <site> install-app frappe_themes
 ```
 
 When updating an existing site, run `bench --site <site> migrate`.
@@ -31,14 +31,14 @@ To go back to Frappe's look, untick **Enable Custom Theme**. Only users with the
 
 ### How it works
 
-- Each standard **Theme** ships with ready-made CSS (in `theme_studio/fixtures/theme.json`): a set of CSS variables (`--ts-*`) scoped to `[data-theme="light"][data-theme-studio="<slug>"]`. Nothing is generated on the site.
-- `theme_studio.bundle.css` holds the rules that read those variables, for both the classic and the redesigned v16 desk. Rules for the redesigned desk only apply while `<html>` has `data-theme-studio-ui="espresso"`, which `theme_studio.bundle.js` sets when that desk is detected, so the classic desk is not affected by them.
-- On each page load, `theme_studio.api.boot.boot_session` (an `extend_bootinfo` hook) sends the active theme's CSS and slug to the browser; `theme_studio.bundle.js` sets `data-theme-studio` on `<html>`, injects the CSS and switches it off whenever Frappe's `data-theme` is not `light`.
+- Each standard **Theme** ships with ready-made CSS (in `frappe_themes/fixtures/theme.json`): a set of CSS variables (`--ts-*`) scoped to `[data-theme="light"][data-frappe-themes="<slug>"]`. Nothing is generated on the site.
+- `frappe_themes.bundle.css` holds the rules that read those variables, for both the classic and the redesigned v16 desk. Rules for the redesigned desk only apply while `<html>` has `data-frappe-themes-ui="espresso"`, which `frappe_themes.bundle.js` sets when that desk is detected, so the classic desk is not affected by them.
+- On each page load, `frappe_themes.api.boot.boot_session` (an `extend_bootinfo` hook) sends the active theme's CSS and slug to the browser; `frappe_themes.bundle.js` sets `data-frappe-themes` on `<html>`, injects the CSS and switches it off whenever Frappe's `data-theme` is not `light`.
 - Themes are only written by the app itself (fixture sync on install and migrate); saving or deleting a Theme from the desk or the API is refused. **Theme Settings** only accepts the standard themes.
 
 ### Fixtures
 
-The 10 standard themes (name, CSS and gallery screenshots) are fixtures in `theme_studio/fixtures/theme.json`, and the theme names are listed in the `fixtures` filter in `hooks.py`, which is also where the app reads the list of standard themes from. To change a theme's look, edit its `compiled_css` in `theme.json` (and update its `modified` timestamp so existing sites re-import it on `bench migrate`), then commit.
+The 10 standard themes (name, CSS and gallery screenshots) are fixtures in `frappe_themes/fixtures/theme.json`, and the theme names are listed in the `fixtures` filter in `hooks.py`, which is also where the app reads the list of standard themes from. To change a theme's look, edit its `compiled_css` in `theme.json` (and update its `modified` timestamp so existing sites re-import it on `bench migrate`), then commit.
 
 ### Gallery screenshots
 
@@ -49,7 +49,7 @@ SITE_URL=http://127.0.0.1:8000 SID=<administrator sid> CHROME=/usr/bin/google-ch
   node scripts/generate_thumbnails.mjs ["Theme Name" ...]
 # re-capture only some views:
 ONLY_VIEWS="Gantt View" node scripts/generate_thumbnails.mjs ...
-bench --site <site> execute theme_studio.utils.thumbnails.sync_thumbnails
+bench --site <site> execute frappe_themes.utils.thumbnails.sync_thumbnails
 ```
 
 Get a SID with `bench --site <site> browse --user Administrator`.
@@ -63,11 +63,11 @@ Get a SID with `bench --site <site> browse --user Administrator`.
 
 ### Development
 
-Tests live in `theme_studio/theme_studio/doctype/theme/test_theme.py` and `theme_settings/test_theme_settings.py`:
+Tests live in `frappe_themes/frappe_themes/doctype/theme/test_theme.py` and `theme_settings/test_theme_settings.py`:
 
 ```bash
 bench --site <site> set-config allow_tests true   # once, on a development site
-bench --site <site> run-tests --app theme_studio
+bench --site <site> run-tests --app frappe_themes
 ```
 
 ### Contributing
@@ -75,7 +75,7 @@ bench --site <site> run-tests --app theme_studio
 This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
 
 ```bash
-cd apps/theme_studio
+cd apps/frappe_themes
 pre-commit install
 ```
 

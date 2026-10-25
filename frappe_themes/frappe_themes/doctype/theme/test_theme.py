@@ -4,13 +4,13 @@
 import frappe
 from frappe.tests import IntegrationTestCase
 
-from theme_studio.api.boot import boot_session
-from theme_studio.theme_studio.doctype.theme.theme import (
+from frappe_themes.api.boot import boot_session
+from frappe_themes.frappe_themes.doctype.theme.theme import (
 	MAINTENANCE_FLAG,
 	get_standard_themes,
 	get_theme_slug,
 )
-from theme_studio.theme_studio.doctype.theme_settings.theme_settings import (
+from frappe_themes.frappe_themes.doctype.theme_settings.theme_settings import (
 	get_selectable_themes,
 	get_theme_gallery,
 )
@@ -21,7 +21,7 @@ from theme_studio.theme_studio.doctype.theme_settings.theme_settings import (
 EXTRA_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 IGNORE_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 
-CSS = '[data-theme="light"][data-theme-studio="{slug}"] {{\n  --ts-primary: {color};\n}}\n'
+CSS = '[data-theme="light"][data-frappe-themes="{slug}"] {{\n  --ts-primary: {color};\n}}\n'
 
 
 def make_theme(theme_name, color="#111111", thumbnails=0):
@@ -45,7 +45,7 @@ def set_active(theme_name, enable=1):
 def get_boot():
 	bootinfo = frappe._dict()
 	boot_session(bootinfo)
-	return bootinfo["theme_studio"]
+	return bootinfo["frappe_themes"]
 
 
 class as_user_outside_install:
@@ -83,7 +83,7 @@ class IntegrationTestTheme(IntegrationTestCase):
 		for name in get_standard_themes():
 			self.assertTrue(frappe.db.exists("Theme", name), f"{name} is not installed")
 			theme = frappe.get_doc("Theme", name)
-			self.assertIn(f'[data-theme-studio="{get_theme_slug(name)}"]', theme.compiled_css)
+			self.assertIn(f'[data-frappe-themes="{get_theme_slug(name)}"]', theme.compiled_css)
 			self.assertIn("--ts-primary:", theme.compiled_css)
 			self.assertEqual(len(theme.thumbnails), 8, f"{name} should have 8 previews")
 

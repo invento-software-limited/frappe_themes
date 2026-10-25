@@ -11,7 +11,7 @@ frappe.ui.form.on("Theme Settings", {
 	refresh(frm) {
 		frappe
 			.xcall(
-				"theme_studio.theme_studio.doctype.theme_settings.theme_settings.get_selectable_themes"
+				"frappe_themes.frappe_themes.doctype.theme_settings.theme_settings.get_selectable_themes"
 			)
 			.then((names) => (frm.selectable_themes = names));
 		frm.events.render_theme_gallery(frm);
@@ -29,7 +29,7 @@ frappe.ui.form.on("Theme Settings", {
 	},
 	render_theme_gallery(frm) {
 		frappe.call({
-			method: "theme_studio.theme_studio.doctype.theme_settings.theme_settings.get_theme_gallery",
+			method: "frappe_themes.frappe_themes.doctype.theme_settings.theme_settings.get_theme_gallery",
 			callback(r) {
 				frm.theme_gallery = new ThemeGallery(
 					frm,

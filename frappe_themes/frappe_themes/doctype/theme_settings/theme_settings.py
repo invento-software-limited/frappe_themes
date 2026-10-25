@@ -5,7 +5,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 
-from theme_studio.theme_studio.doctype.theme.theme import get_standard_themes
+from frappe_themes.frappe_themes.doctype.theme.theme import get_standard_themes
 
 
 class ThemeSettings(Document):

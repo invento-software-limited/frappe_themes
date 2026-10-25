@@ -1,5 +1,5 @@
-app_name = "theme_studio"
-app_title = "Theme Studio"
+app_name = "frappe_themes"
+app_title = "Frappe Themes"
 app_publisher = "Nazmul Hossain"
 app_description = (
 	"Restyle the ERPNext desk with ready-made color themes, developed by Invento Software Limited"
@@ -15,11 +15,11 @@ app_license = "mit"
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
 # 	{
-# 		"name": "theme_studio",
-# 		"logo": "/assets/theme_studio/logo.png",
-# 		"title": "Theme Studio",
-# 		"route": "/theme_studio",
-# 		"has_permission": "theme_studio.api.permission.has_app_permission"
+# 		"name": "frappe_themes",
+# 		"logo": "/assets/frappe_themes/logo.png",
+# 		"title": "Frappe Themes",
+# 		"route": "/frappe_themes",
+# 		"has_permission": "frappe_themes.api.permission.has_app_permission"
 # 	}
 # ]
 
@@ -27,10 +27,10 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_css = "theme_studio.bundle.css"
-app_include_js = "theme_studio.bundle.js"
+app_include_css = "frappe_themes.bundle.css"
+app_include_js = "frappe_themes.bundle.js"
 
-extend_bootinfo = "theme_studio.api.boot.boot_session"
+extend_bootinfo = "frappe_themes.api.boot.boot_session"
 
 fixtures = [
 	{
@@ -58,11 +58,11 @@ fixtures = [
 
 
 # include js, css files in header of web template
-# web_include_css = "/assets/theme_studio/css/theme_studio.css"
-# web_include_js = "/assets/theme_studio/js/theme_studio.js"
+# web_include_css = "/assets/frappe_themes/css/frappe_themes.css"
+# web_include_js = "/assets/frappe_themes/js/frappe_themes.js"
 
 # include custom scss in every website theme (without file extension ".scss")
-# website_theme_scss = "theme_studio/public/scss/website"
+# website_theme_scss = "frappe_themes/public/scss/website"
 
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
@@ -80,7 +80,7 @@ fixtures = [
 # Svg Icons
 # ------------------
 # include app icons in desk
-# app_include_icons = "theme_studio/public/icons.svg"
+# app_include_icons = "frappe_themes/public/icons.svg"
 
 # Home Pages
 # ----------
@@ -107,58 +107,58 @@ fixtures = [
 
 # add methods and filters to jinja environment
 # jinja = {
-# 	"methods": "theme_studio.utils.jinja_methods",
-# 	"filters": "theme_studio.utils.jinja_filters"
+# 	"methods": "frappe_themes.utils.jinja_methods",
+# 	"filters": "frappe_themes.utils.jinja_filters"
 # }
 
 # Installation
 # ------------
 
-# before_install = "theme_studio.install.before_install"
-# after_install = "theme_studio.install.after_install"
+# before_install = "frappe_themes.install.before_install"
+# after_install = "frappe_themes.install.after_install"
 
-# Keep every theme's generated CSS in step with theme_studio.bundle.css after app updates
+# Keep every theme's generated CSS in step with frappe_themes.bundle.css after app updates
 # after_migrate = []
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "theme_studio.uninstall.before_uninstall"
-# after_uninstall = "theme_studio.uninstall.after_uninstall"
+# before_uninstall = "frappe_themes.uninstall.before_uninstall"
+# after_uninstall = "frappe_themes.uninstall.after_uninstall"
 
 # Integration Setup
 # ------------------
 # To set up dependencies/integrations with other apps
 # Name of the app being installed is passed as an argument
 
-# before_app_install = "theme_studio.utils.before_app_install"
-# after_app_install = "theme_studio.utils.after_app_install"
+# before_app_install = "frappe_themes.utils.before_app_install"
+# after_app_install = "frappe_themes.utils.after_app_install"
 
 # Integration Cleanup
 # -------------------
 # To clean up dependencies/integrations with other apps
 # Name of the app being uninstalled is passed as an argument
 
-# before_app_uninstall = "theme_studio.utils.before_app_uninstall"
-# after_app_uninstall = "theme_studio.utils.after_app_uninstall"
+# before_app_uninstall = "frappe_themes.utils.before_app_uninstall"
+# after_app_uninstall = "frappe_themes.utils.after_app_uninstall"
 
 # Build
 # ------------------
 # To hook into the build process
 
-# after_build = "theme_studio.build.after_build"
+# after_build = "frappe_themes.build.after_build"
 
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "theme_studio.notifications.get_notification_config"
+# notification_config = "frappe_themes.notifications.get_notification_config"
 
 # Awesome Bar
 # -----------
 # Extra search results: list of dicts with label, description, route, index.
 # route: ["List", "ToDo"], "/desk/docs/some/page", or "https://example.com"
-# awesomebar_search = ["theme_studio.search.awesomebar_results"]
+# awesomebar_search = ["frappe_themes.search.awesomebar_results"]
 
 # Permissions
 # -----------
@@ -189,47 +189,47 @@ fixtures = [
 
 # scheduler_events = {
 # 	"all": [
-# 		"theme_studio.tasks.all"
+# 		"frappe_themes.tasks.all"
 # 	],
 # 	"daily": [
-# 		"theme_studio.tasks.daily"
+# 		"frappe_themes.tasks.daily"
 # 	],
 # 	"hourly": [
-# 		"theme_studio.tasks.hourly"
+# 		"frappe_themes.tasks.hourly"
 # 	],
 # 	"weekly": [
-# 		"theme_studio.tasks.weekly"
+# 		"frappe_themes.tasks.weekly"
 # 	],
 # 	"monthly": [
-# 		"theme_studio.tasks.monthly"
+# 		"frappe_themes.tasks.monthly"
 # 	],
 # }
 
 # Testing
 # -------
 
-# before_tests = "theme_studio.install.before_tests"
+# before_tests = "frappe_themes.install.before_tests"
 
 # Extend DocType Class
 # ------------------------------
 #
 # Specify custom mixins to extend the standard doctype controller.
 # extend_doctype_class = {
-# 	"Task": "theme_studio.custom.task.CustomTaskMixin"
+# 	"Task": "frappe_themes.custom.task.CustomTaskMixin"
 # }
 
 # Overriding Methods
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "theme_studio.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "frappe_themes.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "theme_studio.task.get_dashboard_data"
+# 	"Task": "frappe_themes.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
@@ -243,13 +243,13 @@ fixtures = [
 
 # Request Events
 # ----------------
-# before_request = ["theme_studio.utils.before_request"]
-# after_request = ["theme_studio.utils.after_request"]
+# before_request = ["frappe_themes.utils.before_request"]
+# after_request = ["frappe_themes.utils.after_request"]
 
 # Job Events
 # ----------
-# before_job = ["theme_studio.utils.before_job"]
-# after_job = ["theme_studio.utils.after_job"]
+# before_job = ["frappe_themes.utils.before_job"]
+# after_job = ["frappe_themes.utils.after_job"]
 
 # User Data Protection
 # --------------------
@@ -279,7 +279,7 @@ fixtures = [
 # --------------------------------
 
 # auth_hooks = [
-# 	"theme_studio.auth.validate"
+# 	"frappe_themes.auth.validate"
 # ]
 
 # Automatically update python controller files with type annotations for this app.

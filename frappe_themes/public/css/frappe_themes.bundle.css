@@ -1,0 +1,1177 @@
+/* Frappe Themes: rules shared by every theme.
+ *
+ * Each Theme only defines the --ts-* color variables (its fixed CSS in Theme > compiled_css, shipped
+ * in fixtures/theme.json); every rule here reads its colors from them. The rules apply only while a theme
+ * is active (frappe_themes.bundle.js sets data-frappe-themes on <html>) and the desk is in light mode.
+ */
+
+/* Frappe Native Root CSS Variables */
+[data-theme="light"][data-frappe-themes] {
+  --primary: var(--ts-primary);
+  --primary-color: var(--ts-primary);
+  --brand-color: var(--ts-primary);
+  --bg-color: var(--ts-page-bg);
+  --fg-color: var(--ts-card-bg);
+  --card-bg: var(--ts-card-bg);
+  --subtle-accent: var(--ts-control-bg);
+  --control-bg: var(--ts-control-bg);
+  --disabled-control-bg: var(--control-bg);
+  --awesomebar-focus-bg: var(--ts-border);
+  --modal-bg: var(--ts-card-bg);
+  --popover-bg: var(--bg-color);
+  --btn-primary: var(--ts-primary);
+  --btn-default-bg: var(--ts-default-btn-bg);
+  --btn-default-hover-bg: color-mix(in srgb, var(--primary) 15%, var(--control-bg));
+  --checkbox-color: var(--ts-checkbox);
+  --navbar-bg: var(--ts-navbar-bg);
+  --surface-menu-bar: var(--ts-sidebar-bg);
+  --sidebar-select-color: var(--ts-sidebar-active-bg);
+  --border-color: var(--ts-border);
+  --table-border-color: var(--ts-border);
+  --btn-group-border-color: var(--ts-border);
+  --scrollbar-thumb-color: var(--border-color);
+  --scrollbar-track-color: var(--bg-color);
+  --focus-default: 0px 0px 0px 2px var(--ts-border);
+}
+
+/* Primary Action Buttons & Click/Active States */
+[data-theme="light"][data-frappe-themes] .btn-primary,
+[data-theme="light"][data-frappe-themes] .primary-action,
+[data-theme="light"][data-frappe-themes] .btn-primary:hover,
+[data-theme="light"][data-frappe-themes] .btn-primary:focus,
+[data-theme="light"][data-frappe-themes] .btn-primary:active,
+[data-theme="light"][data-frappe-themes] .btn-primary.active,
+[data-theme="light"][data-frappe-themes] .primary-action:hover,
+[data-theme="light"][data-frappe-themes] .primary-action:focus,
+[data-theme="light"][data-frappe-themes] .primary-action:active,
+[data-theme="light"][data-frappe-themes] .primary-action.active {
+  background-color: var(--ts-primary-fill) !important;
+  background-image: var(--ts-primary-image) !important;
+  border-color: var(--ts-primary-border) !important;
+  color: var(--ts-primary-text) !important;
+}
+[data-theme="light"][data-frappe-themes] .btn-primary:hover,
+[data-theme="light"][data-frappe-themes] .primary-action:hover {
+  filter: var(--ts-primary-hover-filter);
+}
+
+/* Default Button Focus Ring */
+[data-theme="light"][data-frappe-themes] .btn-default:focus,
+[data-theme="light"][data-frappe-themes] .btn-default.focus {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 2px var(--border-color);
+}
+[data-theme="light"][data-frappe-themes] .btn-default:not(:disabled):not(.disabled):active:focus,
+[data-theme="light"][data-frappe-themes] .btn-default:not(:disabled):not(.disabled).active:focus,
+[data-theme="light"][data-frappe-themes] .show > .dropdown-toggle.btn-default:focus {
+  box-shadow: var(--shadow-inset), 0 0 0 2px var(--border-color);
+}
+
+/* Input Focus Ring */
+[data-theme="light"][data-frappe-themes] .form-control:focus,
+[data-theme="light"][data-frappe-themes] .custom-select:focus {
+  box-shadow: 0 0 0 2px var(--border-color);
+}
+[data-theme="light"][data-frappe-themes] .grid-body .editable-row .form-control:focus {
+  box-shadow: inset 0 0 0 2px var(--border-color);
+}
+
+/* Text Editor Toolbar */
+[data-theme="light"][data-frappe-themes] .ql-toolbar.ql-snow {
+  background-color: var(--control-bg);
+}
+[data-theme="light"][data-frappe-themes] .ql-editor blockquote {
+  border-left-color: var(--primary);
+}
+
+/* Scrollbars */
+[data-theme="light"][data-frappe-themes] .column-limit-reached,
+[data-theme="light"][data-frappe-themes] .grid-scroll-bar {
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+}
+
+/* Text Selection */
+[data-theme="light"][data-frappe-themes] ::selection {
+  background: color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+/* Link Field Open Button */
+[data-theme="light"][data-frappe-themes] .link-btn .btn-open .icon {
+  --icon-stroke: var(--primary);
+}
+
+/* Checkbox Outline */
+[data-theme="light"][data-frappe-themes] input[type="checkbox"]:not(:disabled) {
+  border-color: var(--primary);
+}
+[data-theme="light"][data-frappe-themes] input[type="checkbox"]:checked:not(:disabled) {
+  border: 1px solid var(--primary);
+}
+
+/* Read-only Checkbox */
+[data-theme="light"][data-frappe-themes] input[type="checkbox"]:disabled,
+[data-theme="light"][data-frappe-themes] input[type="checkbox"].disabled-deselected {
+  border-color: var(--border-color);
+}
+[data-theme="light"][data-frappe-themes] input[type="checkbox"]:disabled:checked,
+[data-theme="light"][data-frappe-themes] input[type="checkbox"].disabled-selected {
+  background-color: var(--checkbox-color);
+}
+
+/* Input Placeholder */
+[data-theme="light"][data-frappe-themes] .form-control::placeholder,
+[data-theme="light"][data-frappe-themes] .search-bar .awesomplete input::placeholder {
+  color: color-mix(in srgb, var(--text-color) 60%, var(--bg-color));
+}
+[data-theme="light"][data-frappe-themes] .frappe-control[data-fieldtype="Select"] .placeholder {
+  color: color-mix(in srgb, var(--text-color) 60%, var(--bg-color)) !important;
+}
+
+/* Sidebar Component */
+[data-theme="light"][data-frappe-themes] .body-sidebar,
+[data-theme="light"][data-frappe-themes] .desk-sidebar {
+  background-color: var(--ts-sidebar-fill) !important;
+  background-image: var(--ts-sidebar-image) !important;
+  color: var(--ts-sidebar-text) !important;
+}
+[data-theme="light"][data-frappe-themes] .body-sidebar .standard-sidebar-item.active-sidebar,
+[data-theme="light"][data-frappe-themes] .desk-sidebar .sidebar-item.active {
+  background-color: var(--ts-sidebar-active-fill) !important;
+  background-image: var(--ts-sidebar-active-image) !important;
+}
+[data-theme="light"][data-frappe-themes] .body-sidebar .standard-sidebar-item.active-sidebar {
+  box-shadow: var(--ts-sidebar-active-ring) !important;
+  backdrop-filter: var(--ts-sidebar-active-backdrop);
+}
+[data-theme="light"][data-frappe-themes] .body-sidebar .standard-sidebar-item a,
+[data-theme="light"][data-frappe-themes] .body-sidebar .sidebar-item-label {
+  color: var(--ts-sidebar-text) !important;
+}
+[data-theme="light"][data-frappe-themes] .body-sidebar .standard-sidebar-item.active-sidebar a,
+[data-theme="light"][data-frappe-themes] .body-sidebar .standard-sidebar-item.active-sidebar .sidebar-item-label {
+  color: var(--ts-sidebar-active-text) !important;
+}
+
+/* Sidebar Menu */
+[data-theme="light"][data-frappe-themes] .body-sidebar {
+  --sidebar-hover-color: var(--ts-sidebar-hover);
+  --sidebar-active-color: var(--ts-sidebar-active-bg);
+  --sidebar-border-color: var(--border-color);
+}
+[data-theme="light"][data-frappe-themes] .body-sidebar .sidebar-item-icon,
+[data-theme="light"][data-frappe-themes] .body-sidebar .drop-icon,
+[data-theme="light"][data-frappe-themes] .body-sidebar .sidebar-toggle-btn {
+  color: var(--ts-sidebar-text) !important;
+}
+[data-theme="light"][data-frappe-themes] .body-sidebar .sidebar-item-icon svg,
+[data-theme="light"][data-frappe-themes] .body-sidebar .drop-icon svg,
+[data-theme="light"][data-frappe-themes] .body-sidebar .sidebar-toggle-btn svg {
+  --icon-stroke: var(--ts-sidebar-text);
+  stroke: var(--ts-sidebar-text) !important;
+}
+[data-theme="light"][data-frappe-themes] .body-sidebar .avatar-name-email,
+[data-theme="light"][data-frappe-themes] .body-sidebar .sidebar-notification-count {
+  color: var(--ts-sidebar-text) !important;
+}
+[data-theme="light"][data-frappe-themes] .body-sidebar .keyboard-shortcut,
+[data-theme="light"][data-frappe-themes] .body-sidebar .avatar-name-email .text-secondary {
+  color: var(--ts-sidebar-muted) !important;
+}
+[data-theme="light"][data-frappe-themes] .body-sidebar .sidebar-toggle-btn {
+  border-color: var(--ts-sidebar-border) !important;
+}
+[data-theme="light"][data-frappe-themes] .body-sidebar .sidebar-toggle-btn:hover {
+  background: var(--bg-color) !important;
+}
+[data-theme="light"][data-frappe-themes] .body-sidebar .sidebar-toggle-btn:hover svg {
+  --icon-stroke: var(--primary);
+  stroke: var(--primary) !important;
+}
+
+/* Sidebar group arrows (Reports, Setup, Permissions ...) and the header chevron, on every v16 desk:
+   sidebar_item.js reads a gray from the stylesheet once and writes it onto the <use> element, so
+   only a rule on the <use> itself can recolor them */
+[data-theme="light"][data-frappe-themes] .body-sidebar .drop-icon use,
+[data-theme="light"][data-frappe-themes] .body-sidebar .sidebar-item-control use {
+  stroke: var(--ts-sidebar-text) !important;
+}
+
+/* Workspace shortcut cards, on every v16 desk: Frappe turns a hovered card's border, title and icon
+   near-black (--invert-neutral); use a primary-tinted border and primary title/icon instead */
+[data-theme="light"][data-frappe-themes] .widget.shortcut-widget-box:hover {
+  border-color: color-mix(in srgb, var(--primary) 55%, var(--border-color));
+  --icon-stroke: var(--primary);
+}
+[data-theme="light"][data-frappe-themes] .widget.shortcut-widget-box:hover .widget-label .widget-title {
+  color: var(--primary);
+}
+
+/* Form Connections tab, on every v16 desk: the record count beside a link and the open count are gray
+   (--subtle-fg / --subtle-bg) and the link box turns near-black on hover; tint the counts with the
+   primary color and use a primary-tinted hover border */
+[data-theme="light"][data-frappe-themes] .form-links .document-link .document-link-badge .count,
+[data-theme="light"][data-frappe-themes] .form-links .document-link .report-link-badge .count,
+[data-theme="light"][data-frappe-themes] .form-links .document-link .open-notification {
+  background-color: color-mix(in srgb, var(--primary) 14%, var(--control-bg));
+  color: var(--primary);
+}
+[data-theme="light"][data-frappe-themes] .form-links .document-link .open-notification:hover {
+  background-color: color-mix(in srgb, var(--primary) 26%, var(--control-bg));
+}
+[data-theme="light"][data-frappe-themes] .form-links .document-link:hover {
+  border-color: color-mix(in srgb, var(--primary) 55%, var(--border-color));
+}
+
+/* Activity timeline and switches, on every v16 desk: timeline dots and icons are near-black
+   (--timeline-badge-color on a gray badge), the timeline line is --dark-border-color and a switch
+   that is on turns black; use the primary color, a soft tinted badge and a tinted line */
+[data-theme="light"][data-frappe-themes] .new-timeline {
+  --timeline-badge-color: var(--primary);
+  --timeline-badge-bg: color-mix(in srgb, var(--primary) 12%, var(--control-bg));
+}
+[data-theme="light"][data-frappe-themes] .new-timeline::before {
+  border-left-color: color-mix(in srgb, var(--primary) 35%, var(--border-color));
+}
+[data-theme="light"][data-frappe-themes] .switch .slider {
+  background-color: color-mix(in srgb, var(--primary) 18%, var(--control-bg));
+}
+[data-theme="light"][data-frappe-themes] .switch input:checked + .slider {
+  background-color: var(--primary);
+}
+
+/* Document Naming tables (Selling / Buying / ... Settings), on every v16 desk: the naming series chips
+   are gray .badge-light; give them a soft theme tint and faint border, keeping dark code text */
+[data-theme="light"][data-frappe-themes] .naming-series-table-rows .badge.badge-light {
+  background-color: color-mix(in srgb, var(--primary) 8%, var(--card-bg));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary) 18%, var(--card-bg));
+  color: var(--text-color);
+}
+
+/* Page Side Panels */
+[data-theme="light"][data-frappe-themes] .layout-side-section {
+  background-color: var(--bg-color) !important;
+}
+[data-theme="light"][data-frappe-themes] .layout-side-section .sidebar-standard-image .standard-image {
+  background-color: var(--control-bg) !important;
+  color: var(--primary) !important;
+  border-color: var(--border-color) !important;
+}
+[data-theme="light"][data-frappe-themes] .layout-side-section svg {
+  --icon-stroke: var(--primary);
+  stroke: var(--primary) !important;
+}
+
+/* Workspace & Page Containers */
+[data-theme="light"][data-frappe-themes] .page-container,
+[data-theme="light"][data-frappe-themes] .page-content,
+[data-theme="light"][data-frappe-themes] .desktop-container,
+[data-theme="light"][data-frappe-themes] .layout-main,
+[data-theme="light"][data-frappe-themes] .container.page-body,
+[data-theme="light"][data-frappe-themes] .page-body,
+[data-theme="light"][data-frappe-themes] body,
+[data-theme="light"][data-frappe-themes] #page-desktop {
+  background-color: var(--bg-color) !important;
+}
+
+/* Desk Page Background Image: the page color is laid over the image so text stays readable */
+[data-theme="light"][data-frappe-themes] #page-desktop {
+  background-color: var(--bg-color) !important;
+  background-image: linear-gradient(var(--ts-desk-overlay), var(--ts-desk-overlay)), var(--ts-desk-image) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  min-height: 100vh;
+}
+[data-theme="light"][data-frappe-themes] #page-desktop .page-wrapper,
+[data-theme="light"][data-frappe-themes] #page-desktop .page-body,
+[data-theme="light"][data-frappe-themes] #page-desktop .page-content,
+[data-theme="light"][data-frappe-themes] #page-desktop .layout-main,
+[data-theme="light"][data-frappe-themes] #page-desktop .layout-main-section-wrapper,
+[data-theme="light"][data-frappe-themes] #page-desktop .layout-main-section,
+[data-theme="light"][data-frappe-themes] #page-desktop .desktop-container {
+  background-color: transparent !important;
+}
+
+/* Form View Containers */
+[data-theme="light"][data-frappe-themes] .page-form,
+[data-theme="light"][data-frappe-themes] .form-layout,
+[data-theme="light"][data-frappe-themes] .form-page,
+[data-theme="light"][data-frappe-themes] .form-section,
+[data-theme="light"][data-frappe-themes] .card,
+[data-theme="light"][data-frappe-themes] .layout-main-section-wrapper,
+[data-theme="light"][data-frappe-themes] .layout-main-section {
+  background-color: var(--bg-color) !important;
+}
+[data-theme="light"][data-frappe-themes] .form-tabs-list {
+  --card-bg: var(--bg-color);
+}
+[data-theme="light"][data-frappe-themes] .form-tabs .nav-link.active {
+  color: var(--primary) !important;
+  border-bottom-color: var(--primary) !important;
+}
+
+/* Dropdown Menu & Items */
+[data-theme="light"][data-frappe-themes] .dropdown-menu,
+[data-theme="light"][data-frappe-themes] .frappe-menu {
+  background-color: var(--ts-dropdown-bg) !important;
+}
+[data-theme="light"][data-frappe-themes] .dropdown-menu .dropdown-item:hover,
+[data-theme="light"][data-frappe-themes] .dropdown-menu .dropdown-item:focus,
+[data-theme="light"][data-frappe-themes] .dropdown-menu .dropdown-item:active,
+[data-theme="light"][data-frappe-themes] .dropdown-menu .dropdown-item.active,
+[data-theme="light"][data-frappe-themes] .dropdown-menu > li > a:hover,
+[data-theme="light"][data-frappe-themes] .dropdown-menu > li > a:focus,
+[data-theme="light"][data-frappe-themes] .dropdown-menu a:hover,
+[data-theme="light"][data-frappe-themes] .dropdown-menu a:focus,
+[data-theme="light"][data-frappe-themes] .dropdown-menu-item:hover,
+[data-theme="light"][data-frappe-themes] .dropdown-menu-item:hover:has(a),
+[data-theme="light"][data-frappe-themes] .dropdown-menu-item:hover a {
+  background-color: var(--ts-dropdown-hover-bg) !important;
+  color: var(--ts-dropdown-hover-text) !important;
+}
+[data-theme="light"][data-frappe-themes] .dropdown-menu .dropdown-item:hover *,
+[data-theme="light"][data-frappe-themes] .dropdown-menu > li > a:hover *,
+[data-theme="light"][data-frappe-themes] .dropdown-menu a:hover *,
+[data-theme="light"][data-frappe-themes] .dropdown-menu-item:hover * {
+  color: var(--ts-dropdown-hover-text) !important;
+  --icon-stroke: var(--ts-dropdown-hover-text) !important;
+}
+
+/* List View Header & Rows */
+[data-theme="light"][data-frappe-themes] .frappe-list .list-row-head,
+[data-theme="light"][data-frappe-themes] .frappe-list .list-row-head .level-left,
+[data-theme="light"][data-frappe-themes] .frappe-list .list-row-head .list-row-col {
+  background-color: var(--ts-table-header-bg) !important;
+}
+[data-theme="light"][data-frappe-themes] .list-row .level-left,
+[data-theme="light"][data-frappe-themes] .list-row-head .level-left {
+  padding: 0 !important;
+}
+/* Frappe keeps .level-right sticky over the columns, which scroll under it when they overflow, so it
+   must stay opaque: take the row's own background (header, row or hover) instead of transparent. */
+[data-theme="light"][data-frappe-themes] .list-row .level-right,
+[data-theme="light"][data-frappe-themes] .list-row-head .level-right {
+  background-color: inherit !important;
+  border-left: none !important;
+  box-shadow: none !important;
+}
+[data-theme="light"][data-frappe-themes] .frappe-list .list-row-container {
+  padding-inline: 0 !important;
+  border-radius: 0 !important;
+}
+[data-theme="light"][data-frappe-themes] .frappe-list .list-row-container .list-row {
+  padding-inline: var(--padding-sm);
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+}
+[data-theme="light"][data-frappe-themes] .frappe-list .list-row-head {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+  box-sizing: content-box;
+}
+[data-theme="light"][data-frappe-themes] .frappe-list .list-row-container:last-child .list-row {
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+[data-theme="light"][data-frappe-themes] .list-row-container .list-row {
+  background-color: var(--ts-table-row-bg) !important;
+  color: var(--ts-table-row-text) !important;
+}
+[data-theme="light"][data-frappe-themes] .list-row-container:hover .list-row {
+  background-color: var(--ts-table-row-hover) !important;
+}
+[data-theme="light"][data-frappe-themes] .progress {
+  background-color: var(--control-bg);
+}
+[data-theme="light"][data-frappe-themes] .frappe-list .progress-bar,
+[data-theme="light"][data-frappe-themes] .frappe-list .progress-bar-success {
+  background-color: var(--primary);
+}
+[data-theme="light"][data-frappe-themes] .frappe-list .progress-bar {
+  background-image: var(--ts-primary-image) !important;
+}
+[data-theme="light"][data-frappe-themes] .list-paging-area .btn-paging.btn-info {
+  background-color: var(--primary) !important;
+  background-image: var(--ts-primary-image) !important;
+  color: var(--ts-primary-text) !important;
+  opacity: 1 !important;
+}
+
+/* Child Table (Form Grid): its own colors; each follows the list view unless the theme sets it.
+   Set on the whole Table field: with many columns Frappe draws the outer border and background on
+   a .column-limit-reached wrapper around .form-grid. */
+[data-theme="light"][data-frappe-themes] .frappe-control[data-fieldtype="Table"],
+[data-theme="light"][data-frappe-themes] .form-grid {
+  --table-border-color: var(--ts-grid-border);
+  --border-color: var(--ts-grid-border);
+  --subtle-accent: var(--ts-grid-bg);
+}
+[data-theme="light"][data-frappe-themes] .form-grid .grid-heading-row {
+  --subtle-fg: var(--ts-grid-header-bg);
+  color: var(--ts-grid-header-text);
+}
+[data-theme="light"][data-frappe-themes] .form-grid .grid-body {
+  --fg-color: var(--ts-grid-row-bg);
+}
+[data-theme="light"][data-frappe-themes] .form-grid .grid-body .data-row {
+  color: var(--ts-grid-row-text);
+}
+[data-theme="light"][data-frappe-themes] .form-grid .grid-body .grid-row:not(.grid-row-open):hover {
+  --fg-color: var(--ts-grid-row-hover);
+}
+[data-theme="light"][data-frappe-themes] .form-grid .form-in-grid {
+  background-color: var(--bg-color) !important;
+}
+[data-theme="light"][data-frappe-themes] .form-grid .grid-body .editable-row .link-btn {
+  background-color: var(--control-bg);
+}
+[data-theme="light"][data-frappe-themes] .grid-footer,
+[data-theme="light"][data-frappe-themes] .grid-custom-buttons {
+  background-color: transparent;
+}
+
+/* Report Table (DataTable) */
+[data-theme="light"][data-frappe-themes] .datatable .dt-header {
+  --subtle-fg: var(--ts-table-header-bg);
+  --dt-header-cell-bg: var(--ts-table-header-bg);
+}
+
+/* Tree View */
+[data-theme="light"][data-frappe-themes] .tree-node.hover-active {
+  background-color: var(--ts-table-row-hover) !important;
+}
+[data-theme="light"][data-frappe-themes] .tree-link .icon {
+  --icon-stroke: var(--primary);
+}
+
+/* Status Indicator Badges */
+[data-theme="light"][data-frappe-themes] .indicator-pill.green,
+[data-theme="light"][data-frappe-themes] .indicator-pill.paid {
+  background-color: var(--ts-paid-bg) !important;
+  color: var(--ts-paid-text) !important;
+}
+[data-theme="light"][data-frappe-themes] .indicator-pill.orange,
+[data-theme="light"][data-frappe-themes] .indicator-pill.unpaid {
+  background-color: var(--ts-unpaid-bg) !important;
+  color: var(--ts-unpaid-text) !important;
+}
+[data-theme="light"][data-frappe-themes] .indicator-pill.red,
+[data-theme="light"][data-frappe-themes] .indicator-pill.overdue {
+  background-color: var(--ts-overdue-bg) !important;
+  color: var(--ts-overdue-text) !important;
+}
+
+/* Liked Icon */
+[data-theme="light"][data-frappe-themes] .liked .like-icon,
+[data-theme="light"][data-frappe-themes] .liked .like-icon use {
+  --icon-stroke: var(--primary);
+  fill: var(--primary);
+}
+
+/* Popover Containers */
+[data-theme="light"][data-frappe-themes] .popover,
+[data-theme="light"][data-frappe-themes] .popover-body,
+[data-theme="light"][data-frappe-themes] .popover-content {
+  background-color: var(--bg-color) !important;
+}
+[data-theme="light"][data-frappe-themes] .popover-body,
+[data-theme="light"][data-frappe-themes] .popover-content {
+  border-radius: inherit;
+}
+
+/* Modal Dialog Containers */
+[data-theme="light"][data-frappe-themes] .modal-content {
+  background-color: var(--bg-color) !important;
+}
+
+/* Modern scrollbars: start */
+
+/* Thin, rounded scrollbars with a transparent track. On the dark navigation the thumb is the
+   sidebar's own text color, so it suits any theme. */
+[data-theme="light"][data-frappe-themes] {
+  --scrollbar-track-color: transparent;
+  scrollbar-width: thin;
+}
+[data-theme="light"][data-frappe-themes] .body-sidebar {
+  --scrollbar-thumb-color: color-mix(in srgb, currentColor 28%, transparent);
+  --scrollbar-track-color: transparent;
+}
+
+/* On hover the navigation thumb lights up in the theme's primary color */
+[data-theme="light"][data-frappe-themes] .body-sidebar-top:hover {
+  --scrollbar-thumb-color: color-mix(in srgb, var(--primary) 70%, currentColor);
+}
+
+/* The settings dialog uses the navigation color for its own sidebar; keep it light and readable */
+[data-theme="light"][data-frappe-themes] .settings-dialog {
+  --surface-menu-bar: var(--bg-color);
+}
+
+/* Safari and older Chromium */
+[data-theme="light"][data-frappe-themes] ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+[data-theme="light"][data-frappe-themes] ::-webkit-scrollbar-track {
+  background: transparent;
+}
+[data-theme="light"][data-frappe-themes] ::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color);
+  border-radius: 999px;
+}
+[data-theme="light"][data-frappe-themes] .body-sidebar ::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--primary) 70%, currentColor);
+}
+
+/* Modern scrollbars: end */
+
+/* Views (Image, Gantt, Kanban, Calendar) use --ts-accent: the primary color unless the theme sets its own */
+
+/* Image view cards: start */
+
+/* Image View: ERPNext layout with a border around each card; gray colors follow the theme */
+
+/* Border and spacing so each card stands on its own */
+[data-theme="light"][data-frappe-themes] .image-view-container {
+  gap: 12px;
+}
+[data-theme="light"][data-frappe-themes] .image-view-container .image-view-item {
+  border: 1px solid var(--border-color);
+}
+[data-theme="light"][data-frappe-themes] .image-view-container .image-view-item {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Hover: gentle lift, soft accent-tinted glow, lightly tinted border (ERPNext removes the border) */
+[data-theme="light"][data-frappe-themes] .image-view-container .image-view-item:hover {
+  border: 1px solid color-mix(in srgb, var(--ts-accent) 35%, var(--border-color)) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -14px color-mix(in srgb, var(--ts-accent) 50%, transparent), 0 2px 6px -2px rgba(0, 0, 0, 0.06) !important;
+}
+[data-theme="light"][data-frappe-themes] .image-view-container .image-view-body {
+  overflow: hidden;
+}
+[data-theme="light"][data-frappe-themes] .image-view-container .image-view-body.no-image {
+  transition: background-color 0.2s ease;
+}
+[data-theme="light"][data-frappe-themes] .image-view-container .image-view-item:hover .image-view-body.no-image {
+  background-color: color-mix(in srgb, var(--ts-accent) 8%, var(--control-bg));
+}
+
+/* Photos zoom gently instead of ERPNext fading them to 30% */
+[data-theme="light"][data-frappe-themes] .image-view-container .image-field img {
+  transition: transform 0.3s ease;
+}
+[data-theme="light"][data-frappe-themes] .image-view-container .image-view-item:hover img {
+  filter: none !important;
+  transform: scale(1.03);
+}
+
+/* Empty image area: Frappe uses the page color (--bg-color), which hides it */
+[data-theme="light"][data-frappe-themes] .image-view-container .image-view-body.no-image {
+  background-color: var(--control-bg);
+}
+[data-theme="light"][data-frappe-themes] .image-view-container .placeholder-text {
+  color: var(--ts-accent);
+}
+[data-theme="light"][data-frappe-themes] .image-view-container .image-view-info {
+  color: var(--text-muted);
+}
+[data-theme="light"][data-frappe-themes] .image-view-container .zoom-view {
+  background: var(--ts-accent);
+}
+
+/* Image view cards: end */
+
+/* Gantt view: start */
+
+/* Gantt View (frappe-gantt): grid, today column, task bars and popup follow the theme; a task's own Color still wins */
+
+/* Grid */
+[data-theme="light"][data-frappe-themes] .gantt .grid-header {
+  fill: var(--subtle-accent);
+  stroke: var(--border-color);
+}
+[data-theme="light"][data-frappe-themes] .gantt .grid-row {
+  fill: var(--fg-color);
+}
+[data-theme="light"][data-frappe-themes] .gantt .grid-row:nth-child(even) {
+  fill: color-mix(in srgb, var(--ts-accent) 4%, var(--fg-color));
+}
+[data-theme="light"][data-frappe-themes] .gantt .row-line,
+[data-theme="light"][data-frappe-themes] .gantt .tick {
+  stroke: var(--border-color);
+}
+[data-theme="light"][data-frappe-themes] .gantt .today-highlight {
+  fill: var(--ts-accent);
+  opacity: 0.1;
+}
+[data-theme="light"][data-frappe-themes] .gantt .upper-text {
+  fill: var(--text-muted);
+}
+[data-theme="light"][data-frappe-themes] .gantt .lower-text {
+  fill: var(--text-color);
+}
+[data-theme="light"][data-frappe-themes] .gantt .arrow {
+  stroke: color-mix(in srgb, var(--ts-accent) 60%, var(--text-muted));
+}
+
+/* Task bars; bars with their own task Color keep it */
+[data-theme="light"][data-frappe-themes] .gantt .bar-wrapper:not([class*="color-"]) .bar {
+  fill: color-mix(in srgb, var(--ts-accent) 14%, var(--fg-color));
+  stroke: color-mix(in srgb, var(--ts-accent) 40%, var(--border-color));
+}
+[data-theme="light"][data-frappe-themes] .gantt .bar-wrapper:not([class*="color-"]) .bar-progress,
+[data-theme="light"][data-frappe-themes] .gantt .bar-wrapper:not([class*="color-"]):hover .bar-progress,
+[data-theme="light"][data-frappe-themes] .gantt .bar-wrapper:not([class*="color-"]).active .bar-progress {
+  fill: var(--ts-accent);
+}
+[data-theme="light"][data-frappe-themes] .gantt .bar-wrapper:not([class*="color-"]):hover .bar {
+  fill: color-mix(in srgb, var(--ts-accent) 22%, var(--fg-color));
+  stroke: var(--ts-accent);
+}
+[data-theme="light"][data-frappe-themes] .gantt .bar-wrapper:not([class*="color-"]).active .bar {
+  fill: color-mix(in srgb, var(--ts-accent) 35%, var(--fg-color));
+  stroke: var(--ts-accent);
+}
+[data-theme="light"][data-frappe-themes] .gantt .bar-wrapper.active .handle {
+  fill: color-mix(in srgb, var(--ts-accent) 45%, var(--fg-color));
+}
+[data-theme="light"][data-frappe-themes] .gantt .bar-label,
+[data-theme="light"][data-frappe-themes] .gantt .bar-wrapper.active .bar-label {
+  fill: var(--text-color);
+}
+
+/* Hover popup */
+[data-theme="light"][data-frappe-themes] .gantt-container .popup-wrapper {
+  background: var(--surface-menu-bar);
+}
+[data-theme="light"][data-frappe-themes] .gantt-container .popup-wrapper .subtitle {
+  color: rgba(255, 255, 255, 0.75);
+}
+[data-theme="light"][data-frappe-themes] .gantt-container .popup-wrapper .pointer {
+  border-top-color: var(--surface-menu-bar);
+}
+
+/* Gantt view: end */
+
+/* Kanban view: start */
+
+/* Kanban View: columns, add-card button and cards follow the theme; column indicator colors are left as set on the board */
+
+/* Frappe's kanban color variables */
+[data-theme="light"][data-frappe-themes] {
+  --kanban-column-bg: color-mix(in srgb, var(--control-bg) 55%, var(--bg-color));
+  --kanban-card-bg: var(--fg-color);
+  --kanban-card-hover-bg: var(--fg-color);
+  --kanban-new-card-bg: var(--fg-color);
+  --kanban-new-card-hover-bg: var(--fg-color);
+}
+
+/* + Add <doctype> button: Frappe paints it with the page color */
+[data-theme="light"][data-frappe-themes] .kanban .kanban-column .add-card {
+  background-color: var(--fg-color);
+  color: var(--text-muted);
+}
+[data-theme="light"][data-frappe-themes] .kanban .kanban-column .add-card:hover {
+  color: var(--ts-accent);
+}
+
+/* Cards: soft accent hover, matching Image View */
+[data-theme="light"][data-frappe-themes] .kanban .kanban-card-wrapper .kanban-card {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+[data-theme="light"][data-frappe-themes] .kanban .kanban-card-wrapper .kanban-card:hover {
+  border-color: color-mix(in srgb, var(--ts-accent) 35%, var(--border-color)) !important;
+  box-shadow: 0 10px 22px -14px color-mix(in srgb, var(--ts-accent) 50%, transparent), 0 2px 6px -2px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Kanban view: end */
+
+/* Calendar view: start */
+
+/* Calendar View (FullCalendar): grid, today, weekend, events and view buttons follow the theme; events with their own color keep it */
+
+/* FullCalendar's own variables */
+[data-theme="light"][data-frappe-themes] {
+  --fc-border-color: var(--border-color);
+  --fc-page-bg-color: var(--bg-color);
+  --fc-neutral-bg-color: var(--control-bg);
+  --fc-today-bg-color: color-mix(in srgb, var(--ts-accent) 8%, var(--fg-color));
+  --fc-highlight-color: color-mix(in srgb, var(--ts-accent) 15%, transparent);
+  --fc-event-bg-color: var(--ts-accent);
+  --fc-event-border-color: var(--ts-accent);
+}
+
+/* Grid lines and headers (Frappe: gray-300 / gray-500) */
+[data-theme="light"][data-frappe-themes] .fc-theme-standard td,
+[data-theme="light"][data-frappe-themes] .fc-theme-standard th,
+[data-theme="light"][data-frappe-themes] .fc-theme-standard hr,
+[data-theme="light"][data-frappe-themes] .fc-theme-standard thead,
+[data-theme="light"][data-frappe-themes] .fc-theme-standard tbody,
+[data-theme="light"][data-frappe-themes] .fc-theme-standard .fc-row,
+[data-theme="light"][data-frappe-themes] .fc-theme-standard .fc-popover,
+[data-theme="light"][data-frappe-themes] .fc-theme-standard .fc-scrollgrid {
+  border-color: var(--border-color) !important;
+}
+[data-theme="light"][data-frappe-themes] th.fc-col-header-cell {
+  color: var(--text-muted);
+}
+[data-theme="light"][data-frappe-themes] .fc .fc-axis,
+[data-theme="light"][data-frappe-themes] .fc .fc-timegrid-axis,
+[data-theme="light"][data-frappe-themes] .fc .fc-timegrid-slot-label {
+  color: var(--text-muted) !important;
+}
+
+/* Weekend (Sunday) and today */
+[data-theme="light"][data-frappe-themes] .fc-theme-standard td.fc-day-sun {
+  background: color-mix(in srgb, var(--ts-accent) 4%, var(--bg-color));
+}
+[data-theme="light"][data-frappe-themes] .fc-theme-standard .fc-day-today {
+  background-color: color-mix(in srgb, var(--ts-accent) 8%, var(--fg-color)) !important;
+}
+[data-theme="light"][data-frappe-themes] .fc-theme-standard .fc-day-today .fc-daygrid-day-number {
+  background-color: var(--ts-accent);
+  color: #ffffff;
+}
+
+/* Events: Frappe sets each event's color inline from its status color; only the default blue
+   (blue extra-light, rgb(237, 246, 253)) is replaced, other status colors are kept */
+
+/* ...and events without an inline color, e.g. the placeholder drawn while dragging over time
+   slots (Frappe gives it a light background while FullCalendar's text is white, so it was invisible) */
+[data-theme="light"][data-frappe-themes] .fc .fc-event[style*="237, 246, 253"],
+[data-theme="light"][data-frappe-themes] .fc .fc-event:not([style*='background']) {
+  background-color: color-mix(in srgb, var(--ts-accent) 12%, var(--fg-color)) !important;
+}
+
+[data-theme="light"][data-frappe-themes] .fc .fc-event[style*="237, 246, 253"],
+[data-theme="light"][data-frappe-themes] .fc .fc-event[style*="237, 246, 253"] *,
+[data-theme="light"][data-frappe-themes] .fc .fc-event:not([style*='background']),
+[data-theme="light"][data-frappe-themes] .fc .fc-event:not([style*='background']) * {
+  color: var(--ts-accent) !important;
+}
+[data-theme="light"][data-frappe-themes] .fc .fc-event-mirror {
+  border: 1px dashed var(--ts-accent) !important;
+}
+[data-theme="light"][data-frappe-themes] .fc .fc-daygrid-dot-event {
+  color: var(--ts-accent) !important;
+}
+[data-theme="light"][data-frappe-themes] .fc .fc-daygrid-event-dot {
+  border-color: var(--ts-accent);
+}
+
+/* Active Month / Week / Day button and date selection */
+[data-theme="light"][data-frappe-themes] .fc-button-active,
+[data-theme="light"][data-frappe-themes] .fc .fc-toolbar .btn-group .btn.active {
+  background: var(--ts-accent) !important;
+  color: #ffffff !important;
+}
+[data-theme="light"][data-frappe-themes] .fc-highlight {
+  background: color-mix(in srgb, var(--ts-accent) 15%, transparent) !important;
+}
+
+/* Calendar view: end */
+
+/* Frappe v16.51+ desk (Espresso): start */
+
+/* Frappe v16.51+ redrew the desk on its Espresso design tokens: a dock beside the sidebar, a new
+   sidebar header, and es-* buttons, menus, badges, tabs and progress bars that take their colors
+   from --surface-* / --ink-* tokens instead of the variables above. frappe_themes.bundle.js sets
+   data-frappe-themes-ui="espresso" only on that desk, so older v16 desks never see these rules. */
+
+/* Sidebar and dock share one surface */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] {
+  --desk-sidebar-bg: var(--ts-sidebar-bg);
+  --dock-ink: var(--ts-sidebar-muted);
+  --dock-ink-hover: var(--ts-sidebar-text);
+  --dock-ink-active: var(--ts-sidebar-active-text);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar {
+  border-right-color: var(--ts-sidebar-border);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .divider {
+  border-top-color: var(--ts-sidebar-border);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .indent + .nested-container {
+  border-left-color: var(--ts-sidebar-border);
+}
+
+/* A closed drawer on mobile is see-through in Frappe; the sidebar fill above must not paint it */
+@media (max-width: 767.98px) {
+  [data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar-container:not(.expanded) .body-sidebar {
+    background-color: transparent !important;
+    background-image: none !important;
+    border-right-color: transparent;
+  }
+}
+
+/* Sidebar rows: Frappe's hover is a light gray that hides the sidebar's light text */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .standard-sidebar-item:not(.active-sidebar):hover,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .sidebar-user-button:hover,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .sidebar-user-button.user-menu-active {
+  background-color: var(--ts-sidebar-hover) !important;
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .section-break,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .section-break .sidebar-item-label,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .sidebar-item-suffix {
+  color: var(--ts-sidebar-muted) !important;
+}
+
+/* Collapsed rail: the group standing in for the folded active row wears the active pill */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .sidebar-item-container:has(> .nested-container.hidden .active-sidebar) > .standard-sidebar-item {
+  background-color: var(--ts-sidebar-active-fill) !important;
+  background-image: var(--ts-sidebar-active-image) !important;
+  box-shadow: var(--ts-sidebar-active-ring) !important;
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .sidebar-item-container:has(> .nested-container.hidden .active-sidebar) > .standard-sidebar-item a {
+  color: var(--ts-sidebar-active-text) !important;
+}
+
+/* Sidebar header (module / app switcher) */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .shell-header,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .shell-header .header-title,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .shell-header .drop-icon {
+  color: var(--ts-sidebar-text) !important;
+  --icon-stroke: var(--ts-sidebar-text);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .shell-header .header-subtitle {
+  color: var(--ts-sidebar-muted) !important;
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .shell-header:hover,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .shell-header.hover {
+  background: var(--ts-sidebar-hover) !important;
+}
+/* Open menu: Frappe paints it white, which hid the white title */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .shell-header.active-sidebar {
+  background-color: var(--ts-sidebar-active-fill) !important;
+  background-image: var(--ts-sidebar-active-image) !important;
+  box-shadow: var(--ts-sidebar-active-ring) !important;
+}
+
+/* User chip at the foot of the sidebar */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .sidebar-user-button .avatar-name-email span {
+  color: var(--ts-sidebar-text) !important;
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .body-sidebar .sidebar-user-button .avatar-name-email span + span {
+  color: var(--ts-sidebar-muted) !important;
+}
+
+/* Dock: the tray of app icons, floating or pinned beside the sidebar */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .dock {
+  background-color: var(--ts-sidebar-fill) !important;
+  background-image: var(--ts-sidebar-image) !important;
+  --scrollbar-thumb-color: color-mix(in srgb, var(--ts-sidebar-text) 28%, transparent);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] body.dock-pinned .dock {
+  border-right-color: var(--ts-sidebar-border);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .dock .dock-logo {
+  border-bottom-color: var(--ts-sidebar-border);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .dock .dock-item:hover,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] body.dock-pinned .dock .dock-user-button.user-menu-active {
+  background: var(--ts-sidebar-hover);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .dock .dock-item.active {
+  background-color: var(--ts-sidebar-active-fill);
+  background-image: var(--ts-sidebar-active-image);
+  box-shadow: var(--ts-sidebar-active-ring);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .dock .dock-item:focus-visible {
+  outline-color: var(--ts-sidebar-text);
+}
+
+/* Solid buttons are Espresso's primary action (page buttons, dialogs, onboarding) */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-button[data-variant="solid"]:not([data-theme="red"]):not(:disabled) {
+  background-color: var(--ts-primary-fill) !important;
+  background-image: var(--ts-primary-image) !important;
+  border-color: var(--ts-primary-border) !important;
+  color: var(--ts-primary-text) !important;
+  --icon-stroke: var(--ts-primary-text);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-button[data-variant="solid"]:not([data-theme="red"]):not(:disabled):hover {
+  filter: var(--ts-primary-hover-filter);
+}
+
+/* Subtle / outline / ghost buttons (List View switcher, "..." menu, Skip, Add row): Frappe paints
+   them gray; follow the theme's controls like the classic default buttons beside them */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-button:not([data-theme="red"]) {
+  --bt-fill-bg: var(--control-bg);
+  --bt-fill-bg-hover: var(--btn-default-hover-bg);
+  --bt-fill-bg-active: color-mix(in srgb, var(--primary) 25%, var(--control-bg));
+  --bt-outline-bg-active: color-mix(in srgb, var(--primary) 25%, var(--control-bg));
+  --bt-border: var(--border-color);
+  --bt-border-hover: color-mix(in srgb, var(--primary) 40%, var(--border-color));
+}
+
+/* Active list filter ("Filters 1  x"): Frappe paints .btn-primary-light gray; tint the whole
+   group with the primary color so an applied filter stands out, count as a primary pill */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .filter-selector .filter-button.btn-primary-light,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .filter-selector .filter-button.btn-primary-light + .filter-x-button {
+  background-color: color-mix(in srgb, var(--primary) 14%, var(--control-bg)) !important;
+  color: var(--primary) !important;
+  --icon-stroke: var(--primary);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .filter-selector .filter-button.btn-primary-light:hover,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .filter-selector .filter-button.btn-primary-light + .filter-x-button:hover {
+  background-color: color-mix(in srgb, var(--primary) 24%, var(--control-bg)) !important;
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .filter-selector .filter-button.btn-primary-light .filter-label {
+  background-color: var(--primary) !important;
+  background-image: var(--ts-primary-image);
+  color: var(--ts-primary-text) !important;
+}
+
+/* File drop areas: Data Import "Upload file" dropzone and the attachment uploader dialog.
+   Frappe draws them white/gray with a gray dashed border; tint them with the primary color,
+   stronger on hover and while a file is dragged over */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .diw-file-dropzone-host:not(.has-file) .control-input,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .diw-file-dropzone-host:not(.has-file) .diw-file-dropzone-target,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .file-upload-area {
+  background-color: color-mix(in srgb, var(--primary) 4%, var(--card-bg));
+  border-color: color-mix(in srgb, var(--primary) 45%, var(--border-color));
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .diw-file-dropzone-host:not(.has-file):hover .control-input,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .diw-file-dropzone-host:not(.has-file):hover .diw-file-dropzone-target,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .diw-file-dropzone-host.is-dragover:not(.has-file) .control-input,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .diw-file-dropzone-host.is-dragover:not(.has-file) .diw-file-dropzone-target,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .file-upload-area:hover {
+  background-color: color-mix(in srgb, var(--primary) 10%, var(--card-bg));
+  border-color: var(--primary);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .diw-file-dropzone-icon {
+  color: var(--primary) !important;
+  --icon-stroke: var(--primary);
+}
+/* Uploader sources (My Device, Library, Link, Camera): inline SVGs drawn with --subtle-fg / --text-color */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .file-upload-area .btn-file-upload svg {
+  --subtle-fg: color-mix(in srgb, var(--primary) 14%, var(--control-bg));
+  --text-color: var(--primary);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .file-upload-area .btn-file-upload:hover svg {
+  --subtle-fg: color-mix(in srgb, var(--primary) 26%, var(--control-bg));
+}
+
+/* Progress bars (onboarding steps etc.) */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-progress__track,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-progress__segment {
+  background-color: var(--control-bg);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-progress__fill,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-progress__segment[data-filled] {
+  background-color: var(--primary);
+  background-image: var(--ts-primary-image);
+}
+
+/* Workspace number cards: Frappe outlines them in --outline-gray-1 darkening to --outline-gray-3 on
+   hover; use the theme border, and a primary-tinted border on hover (shortcut cards: see the
+   rule shared by both desks near "Sidebar Menu") */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .widget.number-widget-box {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .widget.number-widget-box:hover {
+  border-color: color-mix(in srgb, var(--primary) 55%, var(--border-color));
+}
+
+/* Onboarding walkthrough ("Make your first sale"): Frappe draws it in gray tokens; give it a
+   soft primary tint like the other workspace widgets, primary step icons and Optional tags */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .widget.onboarding-widget-box {
+  background-color: color-mix(in srgb, var(--primary) 5%, var(--card-bg));
+  border: 1px solid var(--border-color);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .widget.onboarding-widget-box .onboarding-step:not(.is-open):hover {
+  background-color: color-mix(in srgb, var(--primary) 10%, var(--card-bg));
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .widget.onboarding-widget-box .onboarding-step.is-open {
+  background-color: var(--card-bg);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 25%, var(--border-color));
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .widget.onboarding-widget-box .onboarding-step-media {
+  background-color: var(--control-bg);
+}
+/* Step icons carry their stroke inline; done and the open step in primary, pending softer */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .widget.onboarding-widget-box .onboarding-step .step-icon svg {
+  --icon-stroke: color-mix(in srgb, var(--primary) 45%, var(--border-color)) !important;
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .widget.onboarding-widget-box .onboarding-step.is-open .step-icon svg,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .widget.onboarding-widget-box .onboarding-step .step-icon svg:has(use[href$="circle-check"]) {
+  --icon-stroke: var(--primary) !important;
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .widget.onboarding-widget-box .onboarding-step .step-icon svg:has(use[href$="circle-dashed"]) {
+  --icon-stroke: var(--text-muted) !important;
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .widget.onboarding-widget-box .es-badge:not([data-theme]) {
+  --c-fill: color-mix(in srgb, var(--primary) 12%, var(--card-bg));
+  --c-fg: var(--primary);
+}
+
+/* Child table row hover: the new desk paints a hovered row's cells with --subtle-fg (gray) instead
+   of reading --fg-color, so point it at the theme's child-table hover color on that row */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .form-grid .grid-body .grid-row:not(.grid-row-open) .data-row:not(.editable-row):hover {
+  --subtle-fg: var(--ts-grid-row-hover);
+}
+
+/* Text Editor (Quill) toolbar and its dropdowns (Table, text style, size, align): Frappe paints
+   hover / active / open in gray; tint with the primary color, dropdown rows like the other menus */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .ql-toolbar.ql-snow button:hover,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .ql-toolbar.ql-snow button:focus-visible,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .ql-toolbar.ql-snow .ql-picker-label:hover,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .ql-toolbar.ql-snow .ql-icon-picker .ql-picker-item:hover {
+  background-color: var(--btn-default-hover-bg);
+  color: var(--primary);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .ql-toolbar.ql-snow button.ql-active,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .ql-toolbar.ql-snow .ql-picker-label.ql-active,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .ql-toolbar.ql-snow .ql-icon-picker .ql-picker-item.ql-selected {
+  background-color: color-mix(in srgb, var(--primary) 25%, var(--control-bg));
+  color: var(--primary);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .ql-snow .ql-picker-options {
+  background-color: var(--ts-dropdown-bg);
+  box-shadow: 0 0 0 1px var(--border-color), var(--elevation-2xl);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) .ql-picker-item:hover {
+  background-color: var(--ts-dropdown-hover-bg);
+  color: var(--ts-dropdown-hover-text);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) .ql-picker-item.ql-selected:not(:hover) {
+  color: var(--primary);
+}
+
+/* Empty states (empty list, empty chart widget, contacts, Data Import ...): frappe.ui.empty_state draws
+   its icon in a gray well built only from utility classes; tint the well, icon in primary */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .size-11.rounded-full.bg-surface-gray-2.text-ink-gray-5 {
+  background-color: color-mix(in srgb, var(--primary) 12%, var(--control-bg));
+  color: var(--primary);
+  --icon-stroke: var(--primary);
+}
+
+/* Attachment preview pane (click a file in the form sidebar): header and the area behind the file are
+   --subtle-fg (gray); use the page color for the header and a soft control tint behind the file */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .attachment-preview .attachment-preview-header {
+  background-color: var(--bg-color);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .attachment-preview .attachment-preview-body {
+  background-color: color-mix(in srgb, var(--control-bg) 60%, var(--bg-color));
+}
+
+/* Tree View rows: hover / open row like the list hover (classic desk: .tree-node.hover-active),
+   guide lines and expand arrows in the theme instead of gray */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .tree.tree-rows .tree-link:hover,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .tree.tree-rows .tree-link[data-state="open"],
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .tree.tree-rows .tree-link:hover + .balance-area,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .tree.tree-rows .tree-link[data-state="open"] + .balance-area {
+  background-color: var(--ts-table-row-hover);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .tree.tree-rows ul.tree-children > li.tree-node::before,
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .tree.tree-rows ul.tree-children > li.tree-node::after {
+  border-color: color-mix(in srgb, var(--primary) 35%, var(--border-color));
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .tree.tree-rows .tree-link > span:first-child {
+  color: var(--primary);
+  --icon-stroke: var(--primary);
+}
+
+/* Tabs and steppers */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-tabs__tab[data-state="active"] {
+  color: var(--primary);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-tabs__indicator {
+  background: var(--primary);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-stepper__step[data-completed="true"] .es-stepper__marker {
+  background: var(--primary);
+  color: var(--ts-primary-text);
+}
+
+/* List paging (20 / 100 / 500 / 2500): the selected size, as .btn-paging.btn-info on older desks */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .list-paging-area .es-pill[data-state="active"] {
+  background-color: var(--primary) !important;
+  background-image: var(--ts-primary-image) !important;
+  color: var(--ts-primary-text) !important;
+}
+
+/* Segmented controls (list page sizes 20 / 100 / 500 / 2500, gantt zoom, other es-tab-buttons): the
+   rail behind the options is --surface-gray-2 and an option's hover is gray; use the control color
+   for the rail and a primary tint on hover */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-tab-buttons:not([data-type="ghost"]):not([data-type="underline"]) {
+  background: var(--control-bg);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-pill:not([data-variant]):not([data-state="active"]):hover {
+  background: color-mix(in srgb, var(--primary) 16%, var(--control-bg));
+  color: var(--primary);
+}
+
+/* Menus (page "..." menu, sidebar header and user menus) follow the Dropdowns colors */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-menu {
+  background-color: var(--ts-dropdown-bg) !important;
+}
+/* Menu frame and icons follow the theme; disabled rows (e.g. "Expand All" on a tree with nothing
+   to expand) stay clearly inactive but read as a faded theme color instead of gray */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-menu {
+  box-shadow: 0 0 0 1px var(--border-color), var(--elevation-2xl);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-menu__item:not([data-theme="red"]) > svg {
+  color: var(--primary);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-menu__item:is([data-disabled], :disabled),
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-menu__item:is([data-disabled], :disabled) > svg {
+  color: color-mix(in srgb, var(--primary) 40%, var(--text-muted)) !important;
+  opacity: 0.7;
+}
+/* The current choice (e.g. the active view in the List View switcher) and a row whose submenu is
+   open: a light tint of the hover color instead of Frappe's gray; hover still wins below */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-menu__item:not([data-theme="red"]):is([data-state="checked"], [data-state="open"], [aria-expanded="true"]) {
+  background-color: color-mix(in srgb, var(--ts-dropdown-hover-bg) 16%, var(--ts-dropdown-bg));
+  color: var(--text-color);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-menu__item:not([data-theme="red"]):not([data-disabled]):not(:disabled):is([data-highlighted], :hover) {
+  background-color: var(--ts-dropdown-hover-bg) !important;
+  color: var(--ts-dropdown-hover-text) !important;
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-menu__item:not([data-theme="red"]):not([data-disabled]):not(:disabled):is([data-highlighted], :hover) * {
+  color: var(--ts-dropdown-hover-text) !important;
+  --icon-stroke: var(--ts-dropdown-hover-text) !important;
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-popover {
+  background-color: var(--bg-color);
+}
+
+/* Status badges: list statuses are es-badge now instead of .indicator-pill */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-badge[data-theme="green"] {
+  --c-fill: var(--ts-paid-bg);
+  --c-fg: var(--ts-paid-text);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-badge[data-theme="amber"],
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-badge[data-theme="orange"] {
+  --c-fill: var(--ts-unpaid-bg);
+  --c-fg: var(--ts-unpaid-text);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .es-badge[data-theme="red"] {
+  --c-fill: var(--ts-overdue-bg);
+  --c-fg: var(--ts-overdue-text);
+}
+
+/* Kanban View v2: columns and cards match the classic board's theme colors and accent hover */
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .kn-board {
+  --kn-accent: var(--ts-accent);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .kn-column {
+  background-color: var(--kanban-column-bg);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .kn-card:not(.kn-selected):not(.kn-dragging) {
+  background-color: var(--kanban-card-bg);
+  border-color: var(--border-color) !important;
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .kn-card:not(.kn-selected):not(.kn-dragging):hover {
+  border-color: color-mix(in srgb, var(--ts-accent) 35%, var(--border-color)) !important;
+  box-shadow: 0 10px 22px -14px color-mix(in srgb, var(--ts-accent) 50%, transparent), 0 2px 6px -2px rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"][data-frappe-themes][data-frappe-themes-ui="espresso"] .kn-column .kn-add-card:hover {
+  color: var(--ts-accent);
+}
+
+/* Frappe v16.51+ desk (Espresso): end */
